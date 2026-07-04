@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.14.5 on win32)" generated="2026-07-03T19:27:21.707752" rpa="false" schemaversion="5">
+<suite id="s1" name="Automacao" source="C:\Users\Batel\Documents\github\case-automacao\1 - Web\tests\automacao.robot">
+<test id="s1-t1" name="CT01 - Acessar a home page após login" line="7">
+<kw name="Open SauceDemo Login Page" owner="steps" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-03T19:27:21.999555" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000025433FF6CF0&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-03T19:27:21.997070" elapsed="0.002523"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-features\=PasswordLeakDetection</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-07-03T19:27:21.999721" elapsed="0.000139"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-save-password-bubble</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-07-03T19:27:21.999951" elapsed="0.000098"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:22.000415" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-03T19:27:22.000190" elapsed="1.657278"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.657645" elapsed="0.020353"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${USERNAME_INPUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.678167" elapsed="0.007885"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:23.686687" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.686510" elapsed="0.000228"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:23.761235" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/login_page.png"&gt;&lt;img src="results/screenshots/login_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.686838" elapsed="0.074493"/>
+</kw>
+<arg>login_page</arg>
+<status status="PASS" start="2026-07-03T19:27:23.686263" elapsed="0.075166"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:21.996475" elapsed="1.765013"/>
+</kw>
+<kw name="Login With Valid Credentials" owner="steps">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:23.762279" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<arg>${USERNAME_INPUT}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.761974" elapsed="0.061763"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:23.824221" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-07-03T19:27:23.841968" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.823928" elapsed="0.045061"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:23.869336" level="INFO">Clicking button 'id:login-button'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.869145" elapsed="0.064942"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/inventory.html</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.934269" elapsed="0.003152"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${INVENTORY_LIST}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.937579" elapsed="0.006762"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:23.944975" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.944740" elapsed="0.000288"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:24.083102" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/inventory_page.png"&gt;&lt;img src="results/screenshots/inventory_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:23.945120" elapsed="0.138073"/>
+</kw>
+<arg>inventory_page</arg>
+<status status="PASS" start="2026-07-03T19:27:23.944519" elapsed="0.138757"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:23.761768" elapsed="0.321555"/>
+</kw>
+<kw name="Verify Inventory Page Is Open" owner="steps">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:24.086468" level="INFO">Current location is 'https://www.saucedemo.com/inventory.html'.</msg>
+<arg>${INVENTORY_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-07-03T19:27:24.083789" elapsed="0.002740"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:24.090921" level="INFO">Current page contains element 'class:inventory_list'.</msg>
+<arg>${INVENTORY_LIST}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:24.086654" elapsed="0.004339"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:24.091541" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:24.091352" elapsed="0.000246"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:24.203028" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/inventory_validation.png"&gt;&lt;img src="results/screenshots/inventory_validation.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:24.091690" elapsed="0.111453"/>
+</kw>
+<arg>inventory_validation</arg>
+<status status="PASS" start="2026-07-03T19:27:24.091145" elapsed="0.112077"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:24.083574" elapsed="0.119695"/>
+</kw>
+<kw name="Close SauceDemo Session" owner="steps" type="TEARDOWN">
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:24.204095" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:24.203930" elapsed="0.000216"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:24.311519" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/session_closed.png"&gt;&lt;img src="results/screenshots/session_closed.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:24.204233" elapsed="0.107376"/>
+</kw>
+<arg>session_closed</arg>
+<status status="PASS" start="2026-07-03T19:27:24.203751" elapsed="0.107938"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-03T19:27:24.311804" elapsed="2.148272"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:24.203545" elapsed="2.256630"/>
+</kw>
+<doc>Verificar se o usuário consegue acessar a home page após login com credenciais válidas</doc>
+<tag>CT01</tag>
+<tag>regressivo</tag>
+<status status="PASS" start="2026-07-03T19:27:21.995698" elapsed="4.464664"/>
+</test>
+<test id="s1-t2" name="CT02 - Adicionar item ao carrinho e validar na página do carrinho" line="13">
+<kw name="Open SauceDemo Login Page" owner="steps" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-03T19:27:26.461724" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x00000254340FFC50&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-03T19:27:26.461478" elapsed="0.000274"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-features\=PasswordLeakDetection</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-07-03T19:27:26.461845" elapsed="0.000116"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-save-password-bubble</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-07-03T19:27:26.462056" elapsed="0.000119"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:26.462486" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-03T19:27:26.462288" elapsed="1.338631"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-07-03T19:27:27.801145" elapsed="0.020516"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${USERNAME_INPUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:27.821882" elapsed="0.007598"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:27.830213" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:27.829996" elapsed="0.000288"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:27.903685" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/login_page.png"&gt;&lt;img src="results/screenshots/login_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:27.830435" elapsed="0.073376"/>
+</kw>
+<arg>login_page</arg>
+<status status="PASS" start="2026-07-03T19:27:27.829699" elapsed="0.074227"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:26.461262" elapsed="1.442757"/>
+</kw>
+<kw name="Login With Valid Credentials" owner="steps">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:27.904791" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<arg>${USERNAME_INPUT}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:27.904584" elapsed="0.068896"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:27.973924" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-07-03T19:27:27.994114" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:27.973668" elapsed="0.051334"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:28.025474" level="INFO">Clicking button 'id:login-button'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.025204" elapsed="0.080750"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/inventory.html</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.106175" elapsed="0.003457"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${INVENTORY_LIST}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.109821" elapsed="0.007533"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:28.118058" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.117856" elapsed="0.000261"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:28.284220" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/inventory_page.png"&gt;&lt;img src="results/screenshots/inventory_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.118235" elapsed="0.166073"/>
+</kw>
+<arg>inventory_page</arg>
+<status status="PASS" start="2026-07-03T19:27:28.117581" elapsed="0.166826"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:27.904340" elapsed="0.380119"/>
+</kw>
+<kw name="Add Backpack To Cart" owner="steps">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:28.285174" level="INFO">Clicking button 'id:add-to-cart-sauce-labs-backpack'.</msg>
+<arg>${BACKPACK_ADD_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.284924" elapsed="0.042830"/>
+</kw>
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<arg>${CART_BADGE}</arg>
+<arg>1</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.327954" elapsed="0.013619"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:28.342361" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.342103" elapsed="0.000324"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:28.455465" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/cart_with_item.png"&gt;&lt;img src="results/screenshots/cart_with_item.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.342557" elapsed="0.112999"/>
+</kw>
+<arg>cart_with_item</arg>
+<status status="PASS" start="2026-07-03T19:27:28.341817" elapsed="0.113821"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:28.284703" elapsed="0.170996"/>
+</kw>
+<kw name="Open Cart" owner="steps">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:28.456392" level="INFO">Clicking link 'xpath://a[@class='shopping_cart_link']'.</msg>
+<arg>${CART_LINK}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.456203" elapsed="0.039245"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${CART_TITLE}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.495656" elapsed="0.007059"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:28.510157" level="INFO">Current page contains text 'Sauce Labs Backpack'.</msg>
+<arg>${CART_ITEM_NAME}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.502878" elapsed="0.007364"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:28.510904" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.510656" elapsed="0.000328"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:28.589588" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/cart_page.png"&gt;&lt;img src="results/screenshots/cart_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.511091" elapsed="0.078604"/>
+</kw>
+<arg>cart_page</arg>
+<status status="PASS" start="2026-07-03T19:27:28.510412" elapsed="0.079374"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:28.455985" elapsed="0.133866"/>
+</kw>
+<kw name="Close SauceDemo Session" owner="steps" type="TEARDOWN">
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:28.590975" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.590734" elapsed="0.000311"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:28.667802" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/session_closed.png"&gt;&lt;img src="results/screenshots/session_closed.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.591169" elapsed="0.076754"/>
+</kw>
+<arg>session_closed</arg>
+<status status="PASS" start="2026-07-03T19:27:28.590509" elapsed="0.077528"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-03T19:27:28.668185" elapsed="2.132981"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:28.590231" elapsed="2.211038"/>
+</kw>
+<doc>Adicionar item ao carrinho e validar na página do carrinho</doc>
+<tag>CT02</tag>
+<status status="PASS" start="2026-07-03T19:27:26.460813" elapsed="4.340586"/>
+</test>
+<test id="s1-t3" name="CT03 - Adicionar e remover o item do carrinho" line="20">
+<kw name="Open SauceDemo Login Page" owner="steps" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-03T19:27:30.802515" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x00000254340FCCD0&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-03T19:27:30.802301" elapsed="0.000241"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-features\=PasswordLeakDetection</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-07-03T19:27:30.802650" elapsed="0.000130"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-save-password-bubble</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-07-03T19:27:30.802862" elapsed="0.000091"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:30.803225" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-03T19:27:30.803047" elapsed="0.884752"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.688008" elapsed="0.022888"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${USERNAME_INPUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.711067" elapsed="0.007287"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:31.719123" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.718923" elapsed="0.000263"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:31.791582" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/login_page.png"&gt;&lt;img src="results/screenshots/login_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.719309" elapsed="0.072374"/>
+</kw>
+<arg>login_page</arg>
+<status status="PASS" start="2026-07-03T19:27:31.718661" elapsed="0.073126"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:30.802106" elapsed="0.989731"/>
+</kw>
+<kw name="Login With Valid Credentials" owner="steps">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:31.792629" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<arg>${USERNAME_INPUT}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.792412" elapsed="0.068813"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:31.861686" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-07-03T19:27:31.882242" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.861431" elapsed="0.052056"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:31.913943" level="INFO">Clicking button 'id:login-button'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.913682" elapsed="0.073943"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/inventory.html</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.987845" elapsed="0.003628"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${INVENTORY_LIST}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.991598" elapsed="0.007411"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:31.999806" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:31.999578" elapsed="0.000298"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.138686" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/inventory_page.png"&gt;&lt;img src="results/screenshots/inventory_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.000006" elapsed="0.138795"/>
+</kw>
+<arg>inventory_page</arg>
+<status status="PASS" start="2026-07-03T19:27:31.999270" elapsed="0.139637"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:31.792162" elapsed="0.346812"/>
+</kw>
+<kw name="Add Backpack To Cart" owner="steps">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.139730" level="INFO">Clicking button 'id:add-to-cart-sauce-labs-backpack'.</msg>
+<arg>${BACKPACK_ADD_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.139507" elapsed="0.044797"/>
+</kw>
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<arg>${CART_BADGE}</arg>
+<arg>1</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.184495" elapsed="0.027439"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:32.212692" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.212442" elapsed="0.000312"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.328728" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/cart_with_item.png"&gt;&lt;img src="results/screenshots/cart_with_item.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.212871" elapsed="0.115973"/>
+</kw>
+<arg>cart_with_item</arg>
+<status status="PASS" start="2026-07-03T19:27:32.212163" elapsed="0.116783"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:32.139243" elapsed="0.189767"/>
+</kw>
+<kw name="Open Cart" owner="steps">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.329705" level="INFO">Clicking link 'xpath://a[@class='shopping_cart_link']'.</msg>
+<arg>${CART_LINK}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.329500" elapsed="0.039193"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${CART_TITLE}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.368906" elapsed="0.006920"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.383512" level="INFO">Current page contains text 'Sauce Labs Backpack'.</msg>
+<arg>${CART_ITEM_NAME}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.375987" elapsed="0.007614"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:32.384308" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.384058" elapsed="0.000314"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.451747" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/cart_page.png"&gt;&lt;img src="results/screenshots/cart_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.384504" elapsed="0.067356"/>
+</kw>
+<arg>cart_page</arg>
+<status status="PASS" start="2026-07-03T19:27:32.383790" elapsed="0.068216"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:32.329266" elapsed="0.122814"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.452527" level="INFO">Clicking button 'id:remove-sauce-labs-backpack'.</msg>
+<arg>id:remove-sauce-labs-backpack</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.452321" elapsed="0.059867"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.517369" level="INFO">Current page contains text 'Your Cart'.</msg>
+<arg>Your Cart</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.512474" elapsed="0.004965"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.528404" level="INFO">Current page does not contain text 'Sauce Labs Backpack'.</msg>
+<arg>Sauce Labs Backpack</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.517663" elapsed="0.010825"/>
+</kw>
+<kw name="Close SauceDemo Session" owner="steps" type="TEARDOWN">
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:32.529567" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.529354" elapsed="0.000273"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:32.601163" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/session_closed.png"&gt;&lt;img src="results/screenshots/session_closed.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.529725" elapsed="0.071563"/>
+</kw>
+<arg>session_closed</arg>
+<status status="PASS" start="2026-07-03T19:27:32.529158" elapsed="0.072249"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-03T19:27:32.601574" elapsed="2.130291"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:32.528910" elapsed="2.203065"/>
+</kw>
+<doc>Adicionar e remover o item do carrinho</doc>
+<tag>CT03</tag>
+<status status="PASS" start="2026-07-03T19:27:30.801726" elapsed="3.930463"/>
+</test>
+<test id="s1-t4" name="CT04 - Adicionar item ao carrinho e finalizar compra" line="30">
+<kw name="Open SauceDemo Login Page" owner="steps" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-03T19:27:34.733496" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000025434644180&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-03T19:27:34.733251" elapsed="0.000274"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-features\=PasswordLeakDetection</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-07-03T19:27:34.733622" elapsed="0.000117"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-save-password-bubble</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-07-03T19:27:34.733817" elapsed="0.000091"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:34.734170" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-03T19:27:34.733997" elapsed="0.896858"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.631067" elapsed="0.032115"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${USERNAME_INPUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.663346" elapsed="0.007116"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:35.671288" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.671017" elapsed="0.000338"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:35.739798" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/login_page.png"&gt;&lt;img src="results/screenshots/login_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.671483" elapsed="0.068414"/>
+</kw>
+<arg>login_page</arg>
+<status status="PASS" start="2026-07-03T19:27:35.670694" elapsed="0.069302"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:34.733027" elapsed="1.007043"/>
+</kw>
+<kw name="Login With Valid Credentials" owner="steps">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:35.741020" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<arg>${USERNAME_INPUT}</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.740756" elapsed="0.070714"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:35.812024" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-07-03T19:27:35.832751" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.811703" elapsed="0.051815"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:35.864005" level="INFO">Clicking button 'id:login-button'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.863743" elapsed="0.108976"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/inventory.html</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.972943" elapsed="0.003418"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${INVENTORY_LIST}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.976547" elapsed="0.006738"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:35.983962" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.983700" elapsed="0.000319"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.126952" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/inventory_page.png"&gt;&lt;img src="results/screenshots/inventory_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:35.984124" elapsed="0.142915"/>
+</kw>
+<arg>inventory_page</arg>
+<status status="PASS" start="2026-07-03T19:27:35.983453" elapsed="0.143669"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:35.740460" elapsed="0.386715"/>
+</kw>
+<kw name="Add Backpack To Cart" owner="steps">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.128238" level="INFO">Clicking button 'id:add-to-cart-sauce-labs-backpack'.</msg>
+<arg>${BACKPACK_ADD_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.127827" elapsed="0.046461"/>
+</kw>
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<arg>${CART_BADGE}</arg>
+<arg>1</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.174486" elapsed="0.014638"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:36.189879" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.189627" elapsed="0.000317"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.297327" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/cart_with_item.png"&gt;&lt;img src="results/screenshots/cart_with_item.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.190067" elapsed="0.107373"/>
+</kw>
+<arg>cart_with_item</arg>
+<status status="PASS" start="2026-07-03T19:27:36.189349" elapsed="0.108193"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:36.127513" elapsed="0.170097"/>
+</kw>
+<kw name="Open Cart" owner="steps">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.298357" level="INFO">Clicking link 'xpath://a[@class='shopping_cart_link']'.</msg>
+<arg>${CART_LINK}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.298142" elapsed="0.042090"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${CART_TITLE}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.340449" elapsed="0.007367"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.355917" level="INFO">Current page contains text 'Sauce Labs Backpack'.</msg>
+<arg>${CART_ITEM_NAME}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.348013" elapsed="0.008001"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:36.356830" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.356497" elapsed="0.000397"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.430668" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/cart_page.png"&gt;&lt;img src="results/screenshots/cart_page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.357011" elapsed="0.073753"/>
+</kw>
+<arg>cart_page</arg>
+<status status="PASS" start="2026-07-03T19:27:36.356215" elapsed="0.074630"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:36.297879" elapsed="0.133015"/>
+</kw>
+<kw name="Finish Checkout" owner="steps">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.431582" level="INFO">Clicking button 'id:checkout'.</msg>
+<arg>${CHECKOUT_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.431413" elapsed="0.046876"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.478891" level="INFO">Typing text 'Joao' into text field 'id:first-name'.</msg>
+<arg>${FIRST_NAME_INPUT}</arg>
+<arg>${FIRST_NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.478532" elapsed="0.049596"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.528673" level="INFO">Typing text 'Silva' into text field 'id:last-name'.</msg>
+<arg>${LAST_NAME_INPUT}</arg>
+<arg>${LAST_NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.528349" elapsed="0.084089"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.612933" level="INFO">Typing text '12345' into text field 'id:postal-code'.</msg>
+<arg>${ZIP_CODE_INPUT}</arg>
+<arg>${ZIP_CODE}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.612641" elapsed="0.040773"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.653894" level="INFO">Clicking button 'id:continue'.</msg>
+<arg>${CONTINUE_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.653611" elapsed="0.037239"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:36.691578" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.691364" elapsed="0.000265"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:36.753932" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/checkout_overview.png"&gt;&lt;img src="results/screenshots/checkout_overview.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:36.691720" elapsed="0.062315"/>
+</kw>
+<arg>checkout_overview</arg>
+<status status="PASS" start="2026-07-03T19:27:36.691098" elapsed="0.063067"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:41.883303" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-07-03T19:27:41.883507" level="FAIL">Location did not contain '/checkout-step-two.html' in 5 seconds.</msg>
+<arg>/checkout-step-two.html</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="FAIL" start="2026-07-03T19:27:36.754309" elapsed="5.130913">Location did not contain '/checkout-step-two.html' in 5 seconds.</status>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Payment Information</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2026-07-03T19:27:41.885369" elapsed="0.000028"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>xpath://button[contains(., 'Finish')]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-07-03T19:27:41.885471" elapsed="0.000019"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${CHECKOUT_COMPLETE_MESSAGE}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2026-07-03T19:27:41.885556" elapsed="0.000018"/>
+</kw>
+<kw name="Take Screenshot Step" owner="steps">
+<arg>checkout_complete</arg>
+<status status="NOT RUN" start="2026-07-03T19:27:41.885680" elapsed="0.000022"/>
+</kw>
+<status status="FAIL" start="2026-07-03T19:27:36.431199" elapsed="5.454589">Location did not contain '/checkout-step-two.html' in 5 seconds.</status>
+</kw>
+<kw name="Close SauceDemo Session" owner="steps" type="TEARDOWN">
+<kw name="Take Screenshot Step" owner="steps">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-07-03T19:27:41.886680" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots"&gt;C:\Users\Batel\Documents\github\case-automacao\1 - Web\results\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-07-03T19:27:41.886477" elapsed="0.000267"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-07-03T19:27:41.954788" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/screenshots/session_closed.png"&gt;&lt;img src="results/screenshots/session_closed.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/${name}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-07-03T19:27:41.886837" elapsed="0.068039"/>
+</kw>
+<arg>session_closed</arg>
+<status status="PASS" start="2026-07-03T19:27:41.886308" elapsed="0.068648"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-03T19:27:41.955068" elapsed="2.165620"/>
+</kw>
+<status status="PASS" start="2026-07-03T19:27:41.886092" elapsed="2.234700"/>
+</kw>
+<doc>Adicionar item ao carrinho, preencher informações de checkout e finalizar a compra</doc>
+<tag>CT04</tag>
+<tag>regressivo</tag>
+<status status="FAIL" start="2026-07-03T19:27:34.732603" elapsed="9.388384">Location did not contain '/checkout-step-two.html' in 5 seconds.</status>
+</test>
+<status status="FAIL" start="2026-07-03T19:27:21.709154" elapsed="22.412462"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">CT01</stat>
+<stat pass="1" fail="0" skip="0">CT02</stat>
+<stat pass="1" fail="0" skip="0">CT03</stat>
+<stat pass="0" fail="1" skip="0">CT04</stat>
+<stat pass="1" fail="1" skip="0">regressivo</stat>
+</tag>
+<suite>
+<stat name="Automacao" id="s1" pass="3" fail="1" skip="0">Automacao</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
