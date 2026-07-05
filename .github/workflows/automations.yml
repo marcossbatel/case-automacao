@@ -30,13 +30,13 @@ jobs:
           sudo apt-get install -y xvfb chromium-browser chromium-driver || sudo apt-get install -y xvfb chromium chromium-driver
 
       - name: Instalando dependencias do Robot Framework
-        working-directory: ./"1 - Web"
+        working-directory: ./1 - Web
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Executando Testes no Robot Framework
-        working-directory: ./"1 - Web"
+        working-directory: ./1 - Web
         run: |
           xvfb-run -a robot -d reports tests
 
@@ -60,13 +60,13 @@ jobs:
           sudo apt-get install -y xvfb chromium-browser chromium-driver || sudo apt-get install -y xvfb chromium chromium-driver
 
       - name: Instalando dependencias do Selenium
-        working-directory: ./"1 - Web pytest"
+        working-directory: ./1 - Web pytest
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Executando Testes no Pytest Selenium
-        working-directory: ./"1 - Web pytest"
+        working-directory: ./1 - Web pytest
         run: |
           xvfb-run -a pytest -q
 
@@ -85,12 +85,12 @@ jobs:
           node-version: '20'
 
       - name: Instalando dependencias da API
-        working-directory: ./"2 - API"
+        working-directory: ./2 - API
         run: |
           npm ci
 
       - name: Executando Testes da API Vitest
-        working-directory: ./"2 - API"
+        working-directory: ./2 - API
         run: |
           npm run test:vitest
 
@@ -109,12 +109,12 @@ jobs:
           python-version: '3.11'
 
       - name: Instalando dependencias da API Python
-        working-directory: ./"2 - API python"
+        working-directory: ./2 - API python
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Executando Testes da API Python
-        working-directory: ./"2 - API python"
+        working-directory: ./2 - API python
         run: |
           pytest -q
