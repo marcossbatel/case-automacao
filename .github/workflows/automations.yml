@@ -27,7 +27,7 @@ jobs:
       - name: Instalando dependencias do navegador
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb chromium-browser chromium-driver || sudo apt-get install -y xvfb chromium chromium-driver
+          sudo apt-get install -y xvfb
 
       - name: Instalando dependencias do Robot Framework
         working-directory: ./1 - Web
@@ -63,7 +63,7 @@ jobs:
       - name: Instalando dependencias do navegador
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb chromium-browser chromium-driver || sudo apt-get install -y xvfb chromium chromium-driver
+          sudo apt-get install -y xvfb
 
       - name: Instalando dependencias do Selenium
         working-directory: ./1 - Web pytest
