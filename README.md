@@ -59,6 +59,25 @@ robot -i regressivo .\tests\automacao.robot
 
 <br>
 
+### 1 - Web pytest
+
+A mesma automação do diretório `1 - Web`, porém feita utilizando Python com o plugin `pytest` e utilizando o plugin `allure` para geração de reports. 
+
+Para realizar a execução, basta utilizar o comando abaixo no diretório `2 - API python`: 
+
+```bash
+pytest -q
+```
+
+Após a execução, utilize o comando abaixo para verificar o report gerado:
+
+```bash
+npx allure serve allure-results
+```
+
+
+<br>
+
 ### 2 - API (Testes Funcionais)
 
 A automação de testes de API, da pasta "2 - API" é feita utilizando `vitest` em conjunto com o plugin `axios`, para gerar o relatório de excecuções.
@@ -106,6 +125,24 @@ Para a execução, utilize o comando abaixo, dentro do diretório `./2 - API/k6/
 ```bash
 k6 run k6-get-posts-id.js
 ```
+<br>
+
+### 2 - API python
+
+A mesma automação do diretório `2 - API`, porém feita utilizando Python com o plugin `pytest` e utilizando o plugin `allure` para geração de reports. 
+
+Para realizar a execução, basta utilizar o comando abaixo no diretório `2 - API python`: 
+
+```bash
+pytest -q
+```
+
+Após a execução, utilize o comando abaixo para verificar o report gerado:
+
+```bash
+npx allure serve allure-results
+```
+
 
 <br>
 
