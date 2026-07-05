@@ -8,12 +8,12 @@ Resource    ./environment.robot
 ${SCREENSHOT_DIR}    ${EXECDIR}/results/screenshots
 
 *** Keywords ***
-Take Screenshot Step
+Tirar Screenshot
     [Arguments]    ${name}
     Create Directory    ${SCREENSHOT_DIR}
     Capture Page Screenshot    ${SCREENSHOT_DIR}/${name}.png
 
-Open SauceDemo Login Page
+Abrir Pagina de Login do SauceDemo
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     Call Method    ${options}    add_argument    --disable-features\=PasswordLeakDetection
     Call Method    ${options}    add_argument    --disable-save-password-bubble
@@ -28,7 +28,13 @@ Open SauceDemo Login Page
     ...    options=${options}
     Maximize Browser Window
     Wait Until Page Contains Element    ${USERNAME_INPUT}
-    Take Screenshot Step    login_page
+    Tirar Screenshot    login_page
+
+Remover Backpack do carrinho
+    Click Button    id:remove-sauce-labs-backpack
+    Page Should Contain    Your Cart
+    Page Should Not Contain    Sauce Labs Backpack
+
 
 Realizar login com credenciais válidas
     Input Text    ${USERNAME_INPUT}    ${USERNAME}
@@ -36,37 +42,37 @@ Realizar login com credenciais válidas
     Click Button    ${LOGIN_BUTTON}
     Wait Until Location Contains    /inventory.html
     Wait Until Page Contains Element    ${INVENTORY_LIST}
-    Take Screenshot Step    inventory_page
+    Tirar Screenshot    inventory_page
 
-Add Backpack To Cart
+Adicionar Backpack ao Carrinho
     Click Button    ${BACKPACK_ADD_BUTTON}
     Wait Until Element Contains    ${CART_BADGE}    1
-    Take Screenshot Step    cart_with_item
+    Tirar Screenshot    cart_with_item
 
-Open Cart
+Abrir Carrinho
     Click Link    ${CART_LINK}
     Wait Until Page Contains    ${CART_TITLE}
     Page Should Contain    ${CART_ITEM_NAME}
-    Take Screenshot Step    cart_page
+    Tirar Screenshot    cart_page
 
-Finish Checkout
+Finalizar Checkout
     Click Button    ${CHECKOUT_BUTTON}
     Input Text    ${FIRST_NAME_INPUT}    ${FIRST_NAME}
     Input Text    ${LAST_NAME_INPUT}    ${LAST_NAME}
     Input Text    ${ZIP_CODE_INPUT}    ${ZIP_CODE}
     Click Button    ${CONTINUE_BUTTON}
-    Take Screenshot Step    checkout_overview
+    Tirar Screenshot    checkout_overview
     Wait Until Location Contains    /checkout-step-two.html
     Wait Until Page Contains    Payment Information
     Click Button    xpath://button[contains(., 'Finish')]
     Wait Until Page Contains    ${CHECKOUT_COMPLETE_MESSAGE}
-    Take Screenshot Step    checkout_complete
+    Tirar Screenshot    checkout_complete
 
-Verify Inventory Page Is Open
+Verificar se a Home Page está aberta
     Location Should Be    ${INVENTORY_URL}
     Page Should Contain Element    ${INVENTORY_LIST}
-    Take Screenshot Step    inventory_validation
+    Tirar Screenshot    inventory_validation
 
-Close SauceDemo Session
-    Take Screenshot Step    session_closed
+Finalizar Sessão
+    Tirar Screenshot    session_closed
     Close Browser
