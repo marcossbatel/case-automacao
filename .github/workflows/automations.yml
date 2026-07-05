@@ -1,0 +1,120 @@
+name: Automação de Testes - Case QA
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  web-robot:
+    if: github.event.pull_request.head.ref == 'develop' && github.event.pull_request.base.ref == 'main'
+    name: Teste Web Robot Framework
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configurando Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalando dependencias do navegador
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb chromium-browser chromium-driver || sudo apt-get install -y xvfb chromium chromium-driver
+
+      - name: Instalando dependencias do Robot Framework
+        working-directory: ./"1 - Web"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executando Testes no Robot Framework
+        working-directory: ./"1 - Web"
+        run: |
+          xvfb-run -a robot -d reports tests
+
+  web-pytest:
+    if: github.event.pull_request.head.ref == 'develop' && github.event.pull_request.base.ref == 'main'
+    name: Teste Web Pytest Selenium
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configurando Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalando dependencias do navegador
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb chromium-browser chromium-driver || sudo apt-get install -y xvfb chromium chromium-driver
+
+      - name: Instalando dependencias do Selenium
+        working-directory: ./"1 - Web pytest"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executando Testes no Pytest Selenium
+        working-directory: ./"1 - Web pytest"
+        run: |
+          xvfb-run -a pytest -q
+
+  api-jest:
+    if: github.event.pull_request.head.ref == 'develop' && github.event.pull_request.base.ref == 'main'
+    name: Teste API Vitest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configurando Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalando dependencias da API
+        working-directory: ./"2 - API"
+        run: |
+          npm ci
+
+      - name: Executando Testes da API Vitest
+        working-directory: ./"2 - API"
+        run: |
+          npm run test:vitest
+
+  api-python:
+    if: github.event.pull_request.head.ref == 'develop' && github.event.pull_request.base.ref == 'main'
+    name: API Python Pytest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configurando Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalando dependencias da API Python
+        working-directory: ./"2 - API python"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executando Testes da API Python
+        working-directory: ./"2 - API python"
+        run: |
+          pytest -q
