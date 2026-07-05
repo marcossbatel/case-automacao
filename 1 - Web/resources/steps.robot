@@ -18,6 +18,10 @@ Open SauceDemo Login Page
     Call Method    ${options}    add_argument    --disable-features\=PasswordLeakDetection
     Call Method    ${options}    add_argument    --disable-save-password-bubble
     Call Method    ${options}    add_argument    --disable-password-manager-reauthentication
+    Call Method    ${options}    add_argument    --headless\=new
+    Call Method    ${options}    add_argument    --no-sandbox
+    Call Method    ${options}    add_argument    --disable-dev-shm-usage
+    Call Method    ${options}    add_argument    --window-size\=1920,1080
     Open Browser
     ...    ${BASE_URL}
     ...    browser=${BROWSER}
