@@ -1,0 +1,56 @@
+info:
+  name: posts
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: https://jsonplaceholder.typicode.com/posts
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        const body = res.getBody();
+
+        test("O status do retorno deve ser 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        test("A resposta deve ser um array de objetos JSON", function () {
+          expect(body).to.be.an("array");
+        });
+
+        test("O array não deve estar vazio", function () {
+          expect(body.length).to.be.greaterThan(0);
+        });
+
+        test("Todos os items possuaem a estrutura correta", function () {
+          body.forEach((post) => {
+            expect(post).to.have.property("userId");
+            expect(post).to.have.property("id");
+            expect(post).to.have.property("title");
+            expect(post).to.have.property("body");
+            expect(post.userId).to.not.be.null;
+            expect(post.id).to.not.be.null;
+            expect(post.title).to.not.be.empty;
+            expect(post.body).to.not.be.empty;
+          })    
+        });
+
+
+        test("O tipo de todos os itens está correto", function () {
+          body.forEach((post) => {
+            expect(post.userId).to.be.a("number");
+            expect(post.id).to.be.a("number");
+            expect(post.title).to.be.a("string");
+            expect(post.body).to.be.a("string");
+          })
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
