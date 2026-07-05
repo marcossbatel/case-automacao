@@ -7,24 +7,24 @@ class BasePage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
 
-    def open(self, url):
+    def abrir_url(self, url):
         self.driver.get(url)
         return self
 
     def click(self, locator):
         self.wait.until(EC.element_to_be_clickable(locator)).click()
 
-    def type_text(self, locator, text):
+    def inserir_texto(self, locator, text):
         element = self.wait.until(EC.visibility_of_element_located(locator))
         element.clear()
         element.send_keys(text)
 
-    def find(self, locator):
+    def localizar(self, locator):
         return self.wait.until(EC.visibility_of_element_located(locator))
 
     def is_visible(self, locator):
         try:
-            self.find(locator)
+            self.localizar(locator)
             return True
         except Exception:
             return False

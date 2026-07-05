@@ -8,15 +8,15 @@ class InventoryPage(BasePage):
     CART_BADGE = (By.CLASS_NAME, "shopping_cart_badge")
     CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
 
-    def is_open(self):
+    def valida_home(self):
         return self.is_visible(self.INVENTORY_LIST)
 
-    def add_backpack_to_cart(self):
+    def adicionar_backpack_ao_carrinho(self):
         self.click(self.BACKPACK_ADD_BUTTON)
         return self
 
-    def cart_badge_count(self):
-        return self.find(self.CART_BADGE).text
+    def contador_badge_carrinho(self):
+        return self.localizar(self.CART_BADGE).text
 
     def open_cart(self):
         self.click(self.CART_LINK)

@@ -22,24 +22,24 @@ def driver():
     driver.quit()
 
 
-def test_login_opens_inventory_page(driver):
+def test_login_abre_home(driver):
     login_page = LoginPage(driver).abrir()
     login_page.login()
 
     inventory_page = InventoryPage(driver)
-    assert inventory_page.is_open()
+    assert inventory_page.valida_home()
 
 
-def test_add_item_to_cart_and_open_cart(driver):
+def test_adicionar_item_ao_carrinho_e_abrir_carrinho(driver):
     LoginPage(driver).abrir().login()
     inventory_page = InventoryPage(driver)
     inventory_page.adicionar_backpack_ao_carrinho()
-    assert inventory_page.cart_badge_count() == "1"
+    assert inventory_page.contador_badge_carrinho() == "1"
 
     inventory_page.open_cart()
     cart_page = CartPage(driver)
-    assert cart_page.is_open()
-    assert cart_page.has_item()
+    assert cart_page.valida_carrinho()
+    assert cart_page.contem_item()
 
 
 def test_remover_item_do_carrinho(driver):
@@ -49,10 +49,10 @@ def test_remover_item_do_carrinho(driver):
 
     cart_page = CartPage(driver)
     cart_page.remove_item()
-    assert cart_page.is_open()
+    assert cart_page.valida_carrinho()
 
 
-def test_finish_checkout(driver):
+def test_finaliza_checkout(driver):
     LoginPage(driver).abrir().login()
     InventoryPage(driver).adicionar_backpack_ao_carrinho().open_cart()
 
@@ -60,7 +60,7 @@ def test_finish_checkout(driver):
     cart_page.checkout()
 
     checkout_page = CheckoutPage(driver)
-    checkout_page.fill_customer_info()
-    checkout_page.finish_order()
+    checkout_page.preencher_informacoes_cliente()
+    checkout_page.finalizar_pedido()
 
-    assert checkout_page.is_complete()
+    assert checkout_page.pagina_sucesso()

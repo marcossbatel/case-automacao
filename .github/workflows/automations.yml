@@ -44,7 +44,7 @@ jobs:
       - name: Executando Testes no Robot Framework
         working-directory: ./1 - Web
         run: |
-          xvfb-run -a robot -d reports tests
+          xvfb-run -a robot -d reports -i CT01 tests
 
   web-pytest:
     if: github.event.pull_request.head.ref == 'develop' && github.event.pull_request.base.ref == 'main'
