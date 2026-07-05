@@ -14,6 +14,7 @@ ${CART_LINK}    xpath://a[@class='shopping_cart_link']
 ${CART_TITLE}    Your Cart
 ${CART_ITEM_NAME}    Sauce Labs Backpack
 ${CHECKOUT_BUTTON}    id:checkout
+${REMOVE_ITEM_BUTTON}    id:remove-sauce-labs-backpack
 
 # Checkout
 ${FIRST_NAME_INPUT}    id:first-name
