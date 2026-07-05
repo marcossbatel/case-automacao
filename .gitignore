@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# 1 - Web/*.png
+# 1 - Web/*.xml
+# 1 - Web/*.html
+# 1 - Web/results/
+# .pytest_cache/
+# __pycache__/
+# html/
+# reports/

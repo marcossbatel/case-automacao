@@ -1,0 +1,67 @@
+info:
+  name: criar post
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: https://jsonplaceholder.typicode.com/posts
+  headers:
+    - name: Content-type
+      value: application/json; charset=UTF-8
+  body:
+    type: json
+    data: |+
+      {
+        "title": "Teste Titulo",
+        "body": "Descricao",
+        "userId": 1
+      }
+
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        const body = res.getBody();
+        const payload = req.getBody();
+
+        test("Status deve ser 201", function () {
+            expect(res.getStatus()).to.equal(201);
+        });
+
+        test("A resposta é um objeto JSON", function () {
+          expect(body).to.be.an("object");
+        });
+
+        test("A resposta contém um ID e ele é do tipo número", function () {
+            expect(body.id).to.exist;
+            expect(body.id).to.be.a("number");
+        });
+
+        test("Os dados da resposta são iguais ao dados informados no corpo da requisição", function () {
+          expect(body.title).to.equal(payload.title);
+          expect(body.body).to.equal(payload.body);
+          expect(body.userId).to.equal(payload.userId);
+        });
+
+        test("A resposta possui todos os campos", function () {
+            expect(body).to.have.property("id");
+            expect(body).to.have.property("title");
+            expect(body).to.have.property("body");
+            expect(body).to.have.property("userId");
+        });
+
+        test("Os tipos dos campos são corretos", function () {
+            expect(body.id).to.be.a("number");
+            expect(body.title).to.be.a("string");
+            expect(body.body).to.be.a("string");
+            expect(body.userId).to.be.a("number");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
