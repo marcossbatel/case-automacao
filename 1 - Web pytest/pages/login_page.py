@@ -7,12 +7,12 @@ class LoginPage(BasePage):
     PASSWORD_INPUT = (By.ID, "password")
     LOGIN_BUTTON = (By.ID, "login-button")
 
-    def open(self):
-        super().open("https://www.saucedemo.com/")
+    def abrir(self):
+        super().abrir_url("https://www.saucedemo.com/")
         return self
 
     def login(self, username="standard_user", password="secret_sauce"):
-        self.type_text(self.USERNAME_INPUT, username)
-        self.type_text(self.PASSWORD_INPUT, password)
+        self.inserir_texto(self.USERNAME_INPUT, username)
+        self.inserir_texto(self.PASSWORD_INPUT, password)
         self.click(self.LOGIN_BUTTON)
         return self

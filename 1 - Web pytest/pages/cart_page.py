@@ -8,10 +8,10 @@ class CartPage(BasePage):
     REMOVE_BUTTON = (By.ID, "remove-sauce-labs-backpack")
     CHECKOUT_BUTTON = (By.ID, "checkout")
 
-    def is_open(self):
-        return self.find(self.TITLE).text == "Your Cart"
+    def valida_carrinho(self):
+        return self.localizar(self.TITLE).text == "Your Cart"
 
-    def has_item(self):
+    def contem_item(self):
         return self.is_visible(self.ITEM_NAME)
 
     def remove_item(self):
