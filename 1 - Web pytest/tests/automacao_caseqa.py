@@ -9,7 +9,11 @@ from pages.checkout_page import CheckoutPage
 @pytest.fixture
 def driver():
     options = webdriver.ChromeOptions()
-    options.add_argument("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding")
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--window-size\=1920,1080")
+    options.add_argument("--disable-features\=PasswordLeakDetection,PasswordManagerOnboarding")
     options.add_argument("--disable-save-password-bubble")
     options.add_argument("--disable-password-manager-reauthentication")
     driver = webdriver.Chrome(options=options)
