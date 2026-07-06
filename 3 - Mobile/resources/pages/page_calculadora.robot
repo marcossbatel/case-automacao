@@ -1,7 +1,7 @@
 *** Settings ***
-Library    AppiumLibrary
-Resource    ./locators.robot
-Resource    ./environment.robot
+Library     AppiumLibrary
+Resource    ../elements/locator_calculadora.robot
+Resource    ../data/environment.robot
 
 *** Keywords ***
 Abrir Aplicativo Calculadora

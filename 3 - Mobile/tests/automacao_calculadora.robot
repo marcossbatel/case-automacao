@@ -1,21 +1,21 @@
 *** Settings ***
-Resource    ../resources/steps.robot
+Resource    ../resources/base.robot
 Test Setup    Abrir Calculadora
 Test Teardown    Fechar Calculadora
 
 *** Test Cases ***
 CT01 - Validar soma
-    ${resultado}=    Realizar Soma
-    Should Be Equal As Strings    ${resultado}    10
+    [Tags]    CT01
+    Realizar Soma
 
 CT02 - Validar subtração
-    ${resultado}=    Realizar Subtracao
-    Should Be Equal As Strings    ${resultado}    3
+    [Tags]    CT02
+    Realizar Subtracao
 
 CT03 - Validar multiplicação
-    ${resultado}=    Realizar Multiplicacao
-    Should Be Equal As Strings    ${resultado}    12
+    [Tags]    CT03
+    Realizar Multiplicacao
 
 CT04 - Validar divisão
-    ${resultado}=    Realizar Divisao
-    Should Be Equal As Strings    ${resultado}    2
+    [Tags]    CT04
+    Realizar Divisao
