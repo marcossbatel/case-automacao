@@ -46,7 +46,7 @@ robot .\tests\automacao.robot
 Usada para alterar variáveis contidas na automação, variando dados. No exemplo abaixo, alteramos a variável USERNAME para simular diferentes comportamentos e validar os testes contidos na automação.
 
 ```bash
-robot -v USERNAME:locked_out_user .\tests\saucedemo_tests.robot
+robot -v USERNAME:locked_out_user .\tests\automacao.robot
 ```
 
 
@@ -148,4 +148,71 @@ npx allure serve allure-results
 
 ### 3 - Mobile
 
-🚧 EM CONSTRUÇÃO 🚧
+A automação Mobile do diretório `3 - Mobile` foi construída utilizando o `Robot Framework` com o plugin `appiumlibrary`.
+
+A sua execução segue os mesmos padrões das execuções anteriores da ferramenta, porém é necessário que o `Appium` esteja instalado e configurado na máquina, através dos comandos abaixo:
+
+```bash
+npm install -g appium
+appium driver install uiautomator2
+```
+
+Para realizar o mapeamento dos objetos de tela, também foi instalado o plugin `appiumInspector`
+
+```bash
+appium plugin install inspector
+```
+
+Execute o Inspector pelo comando:
+
+```bash
+appium --use-plugins=inspector --allow-cors
+```
+
+Foram utilizados os seguintes capabilities para a realização do mapeamento dos objetos:
+
+```json
+{
+  "platformName": "Android",
+  "appium:automationName": "UiAutomator2",
+  "appium:deviceName": "samsung SM-G930F",
+  "appium:udid": "xxxxxx",
+  "appium:platformVersion": "8",
+  "appium:appPackage": "com.sec.android.app.popupcalculator",
+  "appium:appActivity": "com.sec.android.app.popupcalculator/.Calculator"
+}
+```
+
+
+Com tudo pronto, execute o appium através do comando:
+
+```bash
+appium
+```
+
+
+#### Execução básica
+Usada para executar toda a automação
+
+```bash
+robot .\tests\automacao_calculadora.robot
+```
+
+
+#### Execução com variáveis
+Usada para alterar variáveis contidas na automação, variando dados. No exemplo abaixo, alteramos a variável PLATAFORMA para simular a mesma automação em plataformas distintas.
+
+```bash
+robot -v PLATAFORMA:android .\tests\automacao_calculadora.robot
+```
+ou
+```bash
+robot -v PLATAFORMA:ios .\tests\automacao_calculadora.robot
+```
+
+#### Execução com Tags
+Utilizada para executar cenários que contenham determinada Tag. No exemplo abaixo, executamos o cenário marcado com a Tag CT01, correspondente ao primeiro cenário de teste descrito no arquivo de testes.
+
+```bash
+robot -i CT01 .\tests\automacao_calculadora.robot
+```
